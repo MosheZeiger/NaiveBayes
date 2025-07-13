@@ -2,14 +2,11 @@
 1,Sunny,Hot,High,Weak,Yes
 2,Sunny,Hot,High,Strong,No
 3,Cloudy,Hot,High,Weak,Yes
-4,Rainy,Cool,High,Weak,Yes
 5,Rainy,Cold,Normal,Weak,No
 6,Rainy,Cold,Normal,Strong,No
 7,Cloudy,Cool,Normal,Strong,Yes
 8,Sunny,Cool,High,Weak,No
 9,Sunny,Cold,Normal,Weak,Yes
 10,Rainy,Cool,Normal,Weak,Yes
-11,Sunny,Cool,Normal,Strong,Yes
-12,Cloudy,Hot,Normal,Strong,Yes
 13,Cloudy,Hot,High,Weak,Yes
 14,Rainy,Cool,High,Strong,No
