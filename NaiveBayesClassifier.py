@@ -6,10 +6,39 @@ import logging
 from collections import defaultdict
 from datetime import datetime
 
+
+def ensure_directory_exists(path):
+    # Determine if the path is a file path or a directory path
+    # If it looks like a file (has a base name and a dot), get its directory
+    if os.path.basename(path) and '.' in os.path.basename(path):
+        directory_path = os.path.dirname(path)
+    else:
+        directory_path = path
+
+    # Handle cases where directory_path might be empty (e.g., for just 'my_file.txt')
+    if not directory_path:
+        directory_path = '.' # Default to current directory
+
+    if not os.path.exists(directory_path):
+        try:
+            os.makedirs(directory_path)
+            # We can't use 'logger' yet here, as logger might not be fully configured if this is called first.
+            # print(f"Directory created: {directory_path}") # For initial setup feedback
+            # For a fully configured logger, you'd use logger.info(), but it depends on call order.
+            # For now, let's assume logging.basicConfig is called *after* this directory is ensured.
+            pass # Just create it silently here, the main logger will confirm later if needed.
+        except OSError as e:
+            # If an error occurs *here*, before the logger is fully set up, we'll print.
+            # In a real app, you'd want robust error handling.
+            print(f"ERROR: Could not create directory {directory_path}: {e}")
+            raise # Re-raise the exception as directory creation is critical
+
+
 # --- Logger Configuration ---
 # Set up a logger that writes to a file
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S.%f")[:4]
-LOG_FILE_PATH = f'model_run_{timestamp}.log'
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S.%f")[:-4]
+LOG_FILE_PATH = f'./log/model_run_{timestamp}.log'
+ensure_directory_exists(LOG_FILE_PATH)  # Ensure the directory exists before logging
 logging.basicConfig(
     level=logging.INFO, # Minimum level of messages to log (INFO, WARNING, ERROR, CRITICAL)
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -70,7 +99,9 @@ class DataPreprocessor:
                     initial_nans = processed_df[col].isnull().sum()
                     if initial_nans > 0:
                         fill_value = self.fitted_params.get(f'{col}_mean', processed_df[col].mean()) 
-                        processed_df[col].fillna(fill_value, inplace=True)
+                        # processed_df[col].fillna(fill_value, inplace=True)
+                        processed_df[col] = processed_df[col].fillna(fill_value)
+
                         logger.info(f"[Preprocessor] Imputed {initial_nans} nulls in numeric column '{col}' with mean: {fill_value:.2f}.")
 
         if self.categorical_columns:
