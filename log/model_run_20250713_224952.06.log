@@ -1,0 +1,67 @@
+2025-07-13 22:49:52,060 - __main__ - INFO - --- Starting Naive Bayes Model Script ---
+2025-07-13 22:49:52,060 - __main__ - INFO - 
+--- Step 1: Initializing DataPreprocessor ---
+2025-07-13 22:49:52,060 - __main__ - INFO - 
+--- Step 2: Initializing NaiveBayesClassifier ---
+2025-07-13 22:49:52,061 - __main__ - INFO - 
+--- Step 3: Training the Model ---
+2025-07-13 22:49:52,061 - __main__ - INFO - 
+[Classifier - Train] Starting Naive Bayes model training with file: train.csv
+2025-07-13 22:49:52,064 - __main__ - INFO - [Classifier - Train] Loaded 891 raw training data rows.
+2025-07-13 22:49:52,064 - __main__ - INFO - [Preprocessor - Fit] Starting to learn preprocessing parameters...
+2025-07-13 22:49:52,065 - __main__ - INFO - [Preprocessor - Fit] Finished learning preprocessing parameters.
+2025-07-13 22:49:52,066 - __main__ - INFO - [Preprocessor - Transform] Starting data transformations and cleaning...
+2025-07-13 22:49:52,069 - __main__ - INFO - [Preprocessor] Imputed 177 nulls in numeric column 'Age' with mean: 29.70.
+2025-07-13 22:49:52,072 - __main__ - INFO - [Preprocessor - Transform] Finished transformations and cleaning. Final rows: 891
+2025-07-13 22:49:52,072 - __main__ - INFO - [Classifier - Train] Feature columns selected for model training: ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Embarked']
+2025-07-13 22:49:52,072 - __main__ - INFO - [Classifier - Train] Target categories: [0, 1]
+2025-07-13 22:49:52,072 - __main__ - INFO - 
+[Classifier - Train] Prior Probabilities calculated.
+2025-07-13 22:49:52,077 - __main__ - INFO - 
+[Classifier - Train] Finished calculating likelihood probabilities for 6 features.
+2025-07-13 22:49:52,078 - __main__ - INFO - 
+[Classifier - Train] Training process completed successfully.
+2025-07-13 22:49:52,078 - __main__ - INFO - [Preprocessor] Preprocessor parameters saved to: preprocessor_params_final.json
+2025-07-13 22:49:52,078 - __main__ - INFO - 
+--- Step 4: Making Predictions ---
+2025-07-13 22:49:52,078 - __main__ - INFO - 
+[Classifier - Predict] Starting prediction for file: test.csv
+2025-07-13 22:49:52,080 - __main__ - INFO - [Classifier - Predict] Loaded 23 raw prediction data rows.
+2025-07-13 22:49:52,080 - __main__ - INFO - [Preprocessor - Transform] Starting data transformations and cleaning...
+2025-07-13 22:49:52,083 - __main__ - INFO - [Preprocessor] Imputed 2 nulls in numeric column 'Age' with mean: 29.70.
+2025-07-13 22:49:52,085 - __main__ - INFO - [Preprocessor - Transform] Finished transformations and cleaning. Final rows: 23
+2025-07-13 22:49:52,102 - __main__ - INFO - [Classifier - Predict] Prediction completed. Results saved to titanic_predictions_final.csv
+2025-07-13 22:49:52,102 - __main__ - INFO - 
+Predictions saved to titanic_predictions_final.csv. Here are the first 5 rows (logged separately):
+2025-07-13 22:49:52,104 - __main__ - INFO - 
+   PassengerId  Survived
+0          892         0
+1          893         0
+2          894         0
+3          895         0
+4          896         1
+2025-07-13 22:49:52,104 - __main__ - INFO - 
+--- Step 5: Evaluating Model Performance ---
+2025-07-13 22:49:52,104 - __main__ - INFO - 
+[Classifier - Evaluate] Starting performance evaluation...
+2025-07-13 22:49:52,104 - __main__ - INFO - 
+[Classifier - Predict] Starting prediction for file: test.csv
+2025-07-13 22:49:52,105 - __main__ - INFO - [Classifier - Predict] Loaded 23 raw prediction data rows.
+2025-07-13 22:49:52,105 - __main__ - INFO - [Preprocessor - Transform] Starting data transformations and cleaning...
+2025-07-13 22:49:52,110 - __main__ - INFO - [Preprocessor] Imputed 2 nulls in numeric column 'Age' with mean: 29.70.
+2025-07-13 22:49:52,112 - __main__ - INFO - [Preprocessor - Transform] Finished transformations and cleaning. Final rows: 23
+2025-07-13 22:49:52,116 - __main__ - INFO - [Classifier - Predict] Prediction completed. Results saved to temp_predictions_for_eval.csv
+2025-07-13 22:49:52,118 - __main__ - INFO - [Classifier - Evaluate] Loaded 418 rows of actual results.
+2025-07-13 22:49:52,120 - __main__ - INFO - 
+--- [Classifier - Evaluate] Evaluation Results ---
+2025-07-13 22:49:52,120 - __main__ - INFO - Total predictions: 23
+2025-07-13 22:49:52,121 - __main__ - INFO - Correct predictions: 20
+2025-07-13 22:49:52,121 - __main__ - INFO - Accuracy: 0.8696
+2025-07-13 22:49:52,121 - __main__ - INFO - [Classifier - Evaluate] Temporary file temp_predictions_for_eval.csv deleted.
+2025-07-13 22:49:52,121 - __main__ - INFO - 
+[Classifier - Evaluate] Performance evaluation completed.
+2025-07-13 22:49:52,121 - __main__ - INFO - 
+Final Evaluation Results:
+2025-07-13 22:49:52,121 - __main__ - INFO - Accuracy: 0.8696
+2025-07-13 22:49:52,121 - __main__ - INFO - 
+--- Naive Bayes Model Script Finished ---
