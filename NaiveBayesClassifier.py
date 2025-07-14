@@ -41,7 +41,7 @@ LOG_FILE_PATH = f'./log/model_run_{timestamp}.log'
 ensure_directory_exists(LOG_FILE_PATH)  # Ensure the directory exists before logging
 logging.basicConfig(
     level=logging.INFO, # Minimum level of messages to log (INFO, WARNING, ERROR, CRITICAL)
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format='%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(message)s',
     handlers=[
         logging.FileHandler(LOG_FILE_PATH), # Send logs to a file
         # logging.StreamHandler() # Also send logs to console (optional, can be removed)
