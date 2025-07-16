@@ -1,0 +1,45 @@
+2025-07-16 15:50:20,666 - __main__ - INFO - <module> - --- Starting Naive Bayes Model Script (Local Run) ---
+2025-07-16 15:50:20,667 - __main__ - INFO - <module> - 
+--- Step 1: Initializing DataPreprocessor ---
+2025-07-16 15:50:20,667 - __main__ - INFO - <module> - 
+--- Step 2: Initializing NaiveBayesClassifier ---
+2025-07-16 15:50:20,668 - __main__ - INFO - <module> - 
+--- Step 3: Training the Model ---
+2025-07-16 15:50:20,684 - __main__ - INFO - train - 
+[Classifier - Train] Starting Naive Bayes model training with 891 raw training data rows.
+2025-07-16 15:50:20,684 - __main__ - INFO - fit - [Preprocessor - Fit] Starting to learn preprocessing parameters...
+2025-07-16 15:50:20,692 - __main__ - WARNING - fit - [Preprocessor - Fit] Numeric column 'Fare' not found in DataFrame. Skipping mean calculation.
+2025-07-16 15:50:20,693 - __main__ - INFO - fit - [Preprocessor - Fit] Finished learning preprocessing parameters.
+2025-07-16 15:50:20,693 - __main__ - INFO - transform - [Preprocessor - Transform] Starting data transformations and cleaning...
+2025-07-16 15:50:20,707 - __main__ - INFO - transform - [Preprocessor] Imputed 177 nulls in numeric column 'Age' with mean: 29.70.
+2025-07-16 15:50:20,707 - __main__ - WARNING - transform - [Preprocessor - Transform] Numeric column 'Fare' not found or not numeric in DataFrame. Skipping imputation.
+2025-07-16 15:50:20,711 - __main__ - INFO - transform - [Preprocessor - Transform] Finished transformations and cleaning. Final rows: 891
+2025-07-16 15:50:20,712 - __main__ - INFO - train - [Classifier - Train] Feature columns selected for model training: ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Embarked']
+2025-07-16 15:50:20,712 - __main__ - INFO - train - [Classifier - Train] Target categories: ['0', '1']
+2025-07-16 15:50:20,714 - __main__ - INFO - train - [Classifier - Train] Prior Probabilities calculated.
+2025-07-16 15:50:20,723 - __main__ - INFO - train - [Classifier - Train] Finished calculating likelihood probabilities for 6 features.
+2025-07-16 15:50:20,723 - __main__ - INFO - train - [Classifier - Train] Training process completed successfully.
+2025-07-16 15:50:20,724 - __main__ - INFO - save_params - [Preprocessor] Preprocessor parameters saved to: models/preprocessor_params.json
+2025-07-16 15:50:20,725 - __main__ - ERROR - <module> - 
+Error during training: keys must be str, int, float, bool or None, not int64
+Traceback (most recent call last):
+  File "c:\Analiza\NaiveBayes\test_env\app\model.py", line 497, in <module>
+    classifier.save_model(MODEL_PATH)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "c:\Analiza\NaiveBayes\test_env\app\model.py", line 417, in save_model
+    json.dump(model_data, f, indent=4)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\1\AppData\Local\Programs\Python\Python313\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "C:\Users\1\AppData\Local\Programs\Python\Python313\Lib\json\encoder.py", line 433, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\1\AppData\Local\Programs\Python\Python313\Lib\json\encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\1\AppData\Local\Programs\Python\Python313\Lib\json\encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\1\AppData\Local\Programs\Python\Python313\Lib\json\encoder.py", line 376, in _iterencode_dict
+    raise TypeError(f'keys must be str, int, float, bool or None, '
+                    f'not {key.__class__.__name__}')
+TypeError: keys must be str, int, float, bool or None, not int64
+2025-07-16 15:50:20,755 - __main__ - ERROR - <module> - Please ensure data files exist and column names in configurations are correct. Exiting.
